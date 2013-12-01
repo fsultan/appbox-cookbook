@@ -32,7 +32,7 @@ end
 node.default["authorization"]["sudo"]["groups"] = [
   "sudo",
   node["appbox"]["admin_user"],
-  node["appbox"]["deploy_user"]  # TODO workaround to enable deployer to restart app
+  node["appbox"]["deploy_user"],  # TODO workaround to enable deployer to restart app
   node["appbox"]["apps_user"]  # TODO workaround so apps can deploy so sidekiq user has same rights as apps
 ]
 node.default["authorization"]["sudo"]["passwordless"] = true
