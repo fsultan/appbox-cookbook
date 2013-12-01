@@ -9,6 +9,7 @@ include_recipe "user"
 
 user_account node["appbox"]["apps_user"] do
   comment "apps runner"
+  ssh_keys node["appbox"]["apps_keys"]
 end
 user_account node["appbox"]["deploy_user"] do
   comment "deployer"
@@ -32,6 +33,7 @@ node.default["authorization"]["sudo"]["groups"] = [
   "sudo",
   node["appbox"]["admin_user"],
   node["appbox"]["deploy_user"]  # TODO workaround to enable deployer to restart app
+  node["appbox"]["apps_user"]  # TODO workaround so apps can deploy so sidekiq user has same rights as apps
 ]
 node.default["authorization"]["sudo"]["passwordless"] = true
 include_recipe "sudo"
