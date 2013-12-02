@@ -29,6 +29,15 @@ group node["appbox"]["apps_user"] do
   ]
 end
 
+group node["appbox"]["deploy_user"] do
+  action :modify
+  members [
+    node["appbox"]["apps_user"],
+    node["appbox"]["admin_user"],
+    node["appbox"]["deploy_user"]
+  ]
+end
+
 node.default["authorization"]["sudo"]["groups"] = [
   "sudo",
   node["appbox"]["admin_user"],
