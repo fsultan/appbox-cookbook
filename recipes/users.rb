@@ -9,9 +9,11 @@ include_recipe "user"
 
 user_account node["appbox"]["apps_user"] do
   comment "apps runner"
+  ssh_keys node["appbox"]["apps_keys"]
 end
 user_account node["appbox"]["deploy_user"] do
   comment "deployer"
+  groups ['apps']
   ssh_keys node["appbox"]["deploy_keys"]
 end
 user_account node["appbox"]["admin_user"] do
