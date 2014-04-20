@@ -8,4 +8,10 @@
 include_recipe "curl"
 #include_recipe "htop"
 include_recipe "git"
-include_recipe "tmux"
+if platform?("centos")
+  package "screen" do
+    action :install
+  end
+else
+  include_recipe "tmux"
+end
